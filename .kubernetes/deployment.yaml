@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicd-k8s-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: cicd-k8s-app
+  template:
+    metadata:
+      labels:
+        app: cicd-k8s-app
+    spec:
+      containers:
+      - name: cicd-k8s-app
+        image: nuelibk/animals-be:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
