@@ -63,3 +63,21 @@ kubectl scale deployments/cicd-k8s-app-deployment --replicas=5
 kubectl scale deployments/cicd-k8s-app-deployment --replicas=3
 ```
 
+```sh
+docker build --no-cache --platform linux/amd64 -t nuelibk/animals-be:latest .
+```
+
+https://medium.com/@drramkumarlakshminarayanan/learn-fundamental-kubernetes-with-killercoda-part-1-474a9acabec6
+
+kubectl expose pod nginx-pod --type=NodePort --port=80 --name=nginx-service
+
+
+taint issue
+
+The error message 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: } indicates that your Kubernetes pod cannot be scheduled on the node because it has a taint that your pod does not tolerate. In this case, the node has the node-role.kubernetes.io/control-plane taint, which is typically applied to control plane nodes (formerly known as master nodes) to prevent regular workloads from running on them.
+
+What Is a Taint?
+Taints in Kubernetes allow nodes to repel a set of pods. A pod can only be scheduled on a tainted node if it has a corresponding toleration.
+
+
+kubectl taint nodes <node-name> node-role.kubernetes.io/control-plane:NoSchedule-
